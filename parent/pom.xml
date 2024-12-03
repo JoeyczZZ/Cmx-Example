@@ -35,6 +35,7 @@
         <common>0.0.1-SNAPSHOT</common>
         <h2database>2.3.232</h2database>
         <junit>5.11.3</junit>
+        <druid>1.2.24</druid>
     </properties>
 
     <modules>
@@ -82,6 +83,13 @@
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
                 <version>${junit}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid}</version>
             </dependency>
 
 
