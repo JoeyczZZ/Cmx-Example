@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 @MybatisPlusTest
 public class UserTest {
@@ -19,19 +20,21 @@ public class UserTest {
 
     @Test
     void insertTest() {
-        String id = IdUtil.genId();
-        User user = User.builder()
-                .id(id)
-                .account("111")
-                .password("111")
-                .deleted(0)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
-                .updatedBy("111")
-                .build();
-        userDao.insert(user);
-        User insertedUser = userDao.selectById(id);
-        assertThat(insertedUser).isNotNull();
+        assertDoesNotThrow(() -> {
+            String id = IdUtil.genId();
+            User user = User.builder()
+                    .id(id)
+                    .account("111")
+                    .password("111")
+                    .deleted(0)
+                    .createdAt(LocalDateTime.now())
+                    .updatedAt(LocalDateTime.now())
+                    .updatedBy("111")
+                    .build();
+            userDao.insert(user);
+            User insertedUser = userDao.selectById(id);
+            assertThat(insertedUser).isNotNull();
+        });
     }
 
 }
