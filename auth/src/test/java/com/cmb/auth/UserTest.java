@@ -3,6 +3,7 @@ package com.cmb.auth;
 import com.baomidou.mybatisplus.test.autoconfigure.MybatisPlusTest;
 import com.cmb.auth.dao.UserDao;
 import com.cmb.auth.entity.User;
+import com.cmb.common.util.IdUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,8 +19,9 @@ public class UserTest {
 
     @Test
     void insertTest() {
+        String id = IdUtil.genId();
         User user = User.builder()
-                .id("111")
+                .id(id)
                 .account("111")
                 .password("111")
                 .deleted(0)
@@ -28,7 +30,8 @@ public class UserTest {
                 .updatedBy("111")
                 .build();
         userDao.insert(user);
-        assertThat(userDao.selectById("111")).isNotNull();
+        User insertedUser = userDao.selectById(id);
+        assertThat(insertedUser).isNotNull();
     }
 
 }
