@@ -1,15 +1,13 @@
-package com.cmb.auth;
+package com.cmb.common;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.cmb.auth.dao")
-public class AuthApplication {
+public class CommonApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AuthApplication.class, args);
+        SpringApplication.run(CommonApplication.class, args);
     }
 
 }
